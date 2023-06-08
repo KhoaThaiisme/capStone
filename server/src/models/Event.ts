@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 const EventSchema = new Schema({
     title: String,
+    cards: [String]
 })
 
 const EventModel = mongoose.model('Event', EventSchema)

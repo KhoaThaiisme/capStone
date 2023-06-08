@@ -1,0 +1,56 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+
+.App {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+.App form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.event {
+    display: grid;
+    width: 500px;
+    margin: 0 auto;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+}
+  
+.event li {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 120px;
+    background: rgb(238, 232, 232);
+    border: 1px solid black;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0.29), 5px 5px 15px 5px rgba(0,0,0,0.29); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0.29), 5px 5px 15px 5px rgba(0,0,0,0.29);
+    border-radius: 10px;
+    cursor: pointer;
+    color: black
+}
+  
+.event li button {
+    position: absolute;
+    font-size: 9px;
+    top: 2px;
+    right: 2px;
+}
+  
+.event li:hover {
+    background: rgb(174, 170, 170);
+}
+
+

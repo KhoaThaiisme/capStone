@@ -1,27 +1,35 @@
+import { config } from 'dotenv'
+config()
+
 import express, {Request, Response} from 'express'
 import mongoose from 'mongoose'
-
+import cors from 'cors'
 import Event from './models/Event'
+import { getEventsController } from './controllers/getEventsController'
+import { createEventController } from './controllers/createEventController'
+import { deleteEventController } from './controllers/deleteEventController'
+import { createCardForEventController } from './controllers/createCardforEventController'
+import { getEventController } from './controllers/getEventController'
 
 
 const app = express();
 const PORT = 8000
 
-app.use(express.json()) // .use express middleware function, we telling expres to use it
+app.use(cors({
+    origin: "*"
+})) // this will allow anything to access the api, * means all 
+app.use(express.json()) // .use express middleware function, we telling express to use it
 
-app.post('/events', async (req: Request, res: Response) => {
-    console.log(req.body)
-    // res.send('this backend is working')
-    const newEvent = new Event({
-        title: req.body.title
-    });
-    const createdEvent = await newEvent.save(); // this will get save into the database
-    res.json(createdEvent)
-})
+app.get('/events', getEventsController)
+app.post('/events', createEventController)
+app.delete('/events/:eventId', deleteEventController)
+app.get('/events/:eventId', getEventController)
+app.post('/events/:eventId/cards', createCardForEventController)
 
 mongoose
-.connect('mongodb+srv://khoa2010:Khoa2010@scheduler.uibflcl.mongodb.net/?retryWrites=true&w=majority')
+.connect(process.env.MONGO_URL!)
 .then(() => {
     console.log(`listening on port ${PORT}`)
     app.listen(PORT)
 })
+

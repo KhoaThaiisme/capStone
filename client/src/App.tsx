@@ -1,13 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Container from 'react-bootstrap/Container';
+import DashBoard from './pages/DashBoard/DashBoard'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
+import CardContent from './pages/CardContent/CardContent';
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
-    
+    <Container>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<DashBoard />}/>
+          <Route path='/events/:eventId' element={<CardContent />}/>
+        </Routes>
+      </BrowserRouter>
+    </Container>
   )
 }
 
