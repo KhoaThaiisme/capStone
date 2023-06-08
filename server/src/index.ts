@@ -10,6 +10,7 @@ import { createEventController } from './controllers/createEventController'
 import { deleteEventController } from './controllers/deleteEventController'
 import { createCardForEventController } from './controllers/createCardforEventController'
 import { getEventController } from './controllers/getEventController'
+import { deleteCardOfEventController } from './controllers/deleteCardOfEventController'
 
 
 const app = express();
@@ -25,6 +26,7 @@ app.post('/events', createEventController)
 app.delete('/events/:eventId', deleteEventController)
 app.get('/events/:eventId', getEventController)
 app.post('/events/:eventId/cards', createCardForEventController)
+app.delete('/events/:eventId/cards/:index', deleteCardOfEventController)
 
 mongoose
 .connect(process.env.MONGO_URL!)

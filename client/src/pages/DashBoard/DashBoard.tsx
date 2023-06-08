@@ -32,7 +32,9 @@ function DashBoard() {
   }
 
   return (
+  <container>
   <div className='App'>
+    <h1>Your Cards</h1>
     <div className='event'>
       {
         events.map((e) => (
@@ -59,6 +61,7 @@ function DashBoard() {
       <button>Create Event</button>
     </form>
   </div>
+  </container>
   )
 }
 

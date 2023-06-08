@@ -1,0 +1,15 @@
+.header {
+   height: 80px;
+   background: white; 
+   color: aqua;
+   display: flex;
+   align-items: center;
+   padding-left: 20px;
+}
+
+.authorization {
+    /* font-size: 20px; */
+    display: flex;
+    margin: 0 auto;
+    gap: 20px
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { createCardContent } from '../../api/createCardContent'
+import deleteCardContent from '../../api/deleteCardContent'
 import { getEvent } from '../../api/getEvent'
 import { TEvent} from '../../api/getEvents'
 import './cardcontent.css'
@@ -30,18 +31,21 @@ const CardContent = () => {
       fetchEvent()
     }, [eventId])
     
-    // async function handleDeleteEvent (eventId: string) {
-    //   await deleteEvent(eventId)
-    //   setEvents(events.filter(event => event._id !== eventId))
-    // }
+    async function handleDeleteCard (index: number) {
+    // if (!eventId) return;
+      const newEvent = await deleteCardContent(eventId, index)
+      setTextArray(newEvent.cards) //.filter(t => textArray[t] !== index)
+    }
   
     return (
+    <container>
     <div className='App'>
-      <div className='event'>
+        <h1>{event?.title}</h1>
+      <div className='text'>
         {
-          textArray.map((card) => (
+          textArray.map((card, index) => (
             <li key={card}>
-              {/* <button onClick={() => handleDeleteEvent(e._id)}>X</button> */}
+              <button onClick={() => handleDeleteCard(index)}>X</button>
               {card}
             </li>
           ))
@@ -59,10 +63,16 @@ const CardContent = () => {
             setText(e.target.value)
           }
         }
+        style=
+        {{
+          height: 40, borderColor: 'gray', borderWidth: 1, color : "black"
+        }}
         />
+        
         <button>Create Text</button>
       </form>
     </div>
+    </container>
     )
 }
 
